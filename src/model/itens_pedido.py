@@ -1,49 +1,65 @@
-from model.pedidos import Pedido
-from model.produtos import Produto
+from model.contas import Conta
+from datetime import date
 
-class ItemPedido:
+class Movimentacao:
     def __init__(self, 
-                 codigo_item:int=None,
-                 quantidade:float=None,
-                 valor_unitario:float=None,
-                 pedido:Pedido=None,
-                 produto:Produto=None
+                 id:int=None,
+                 data:date=None,
+                 descricao:str=None,
+                 valor:float=None,
+                 saldo_anterior:float=None,
+                 saldo_atual:float=None,                 
+                 conta:Conta=None
                  ):
-        self.set_codigo_item(codigo_item)
-        self.set_quantidade(quantidade)
-        self.set_valor_unitario(valor_unitario)
-        self.set_pedido(pedido)
-        self.set_produto(produto)
+        self.set_id(id)
+        self.set_data(data)        
+        self.set_descricao(descricao)
+        self.set_valor(valor)
+        self.set_saldo_anterior(saldo_anterior)        
+        self.set_saldo_atual(saldo_atual)        
+        self.set_conta(conta)
 
-    def set_codigo_item(self, codigo_item:int):
-        self.codigo_item = codigo_item
+    def set_id(self, id:int):
+        self.id = id
 
-    def set_quantidade(self, quantidade:float):
-        self.quantidade = quantidade
+    def set_data(self, data:date):
+        self.data = data
 
-    def set_valor_unitario(self, valor_unitario:float):
-        self.valor_unitario = valor_unitario
+    def set_descricao(self, descricao:str):
+        self.descricao = descricao
     
-    def set_pedido(self, pedido:Pedido):
-        self.pedido = pedido
+    def set_valor(self, valor:float):
+        self.valor = valor
 
-    def set_produto(self, produto:Produto):
-        self.produto = produto
+    def set_saldo_anterior(self, saldo_anterior:float):
+        self.saldo_anterior = saldo_anterior
 
-    def get_codigo_item(self) -> int:
-        return self.codigo_item
+    def set_saldo_atual(self, saldo_atual:float):
+        self.saldo_atual = saldo_atual
 
-    def get_quantidade(self) -> float:
-        return self.quantidade
+    def set_conta(self, conta:Conta):
+        self.conta = conta                
 
-    def get_valor_unitario(self) -> float:
-        return self.valor_unitario
+    def get_id(self) -> int:
+        return self.id
+
+    def get_data(self) -> date:
+        return self.data
+
+    def get_descricao(self) -> str:
+        return self.descricao
     
-    def get_pedido(self) -> Pedido:
-        return self.pedido
+    def get_valor(self) -> float:
+        return self.valor
 
-    def get_produto(self) -> Produto:
-        return self.produto
+    def get_saldo_anterior(self) -> float:
+        return self.saldo_anterior        
+    
+    def get_saldo_atual(self) -> float:
+        return self.saldo_atual
+
+    def get_conta(self) -> Conta:
+        return self.conta
 
     def to_string(self):
-        return f"Item: {self.get_codigo_item()} | Quant.: {self.get_quantidade()} | Vlr. Unit.: {self.get_valor_unitario()} | Prod.: {self.get_produto().get_descricao()} | Ped: {self.get_pedido().get_codigo_pedido()}"
+        return f"Movimentação: {self.get_id()} | Data Mov.: {self.get_data()} | Desc.: {self.get_descricao()} | Valor: {self.get_valor()} | Conta: {self.get_conta().get_numero()}"
