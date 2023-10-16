@@ -1,30 +1,50 @@
-class Fornecedor:
+from datetime import date
+from model.clientes import Cliente
+##from model.fornecedores import Fornecedor
+
+class Conta:
     def __init__(self, 
-                 CNPJ:str=None, 
-                 razao_social:str=None, 
-                 nome_fantasia:str=None
+                 numero:int=None,
+                 tipo:str=None,
+                 saldo:float=None,
+                 limite:float=None,
+                 cliente:Cliente= None
                  ):
-        self.set_CNPJ(CNPJ)
-        self.set_razao_social(razao_social)
-        self.set_nome_fantasia(nome_fantasia)
+        self.set_numero(numero)
+        self.set_tipo(tipo)
+        self.set_saldo(saldo)
+        self.set_limite(limite)
+        self.set_cliente(cliente)
+    
+    def set_numero(self, numero:int):
+        self.numero = numero
 
-    def set_CNPJ(self, CNPJ:str):
-        self.CNPJ = CNPJ
+    def set_tipo(self, tipo:str):
+        self.tipo = tipo
 
-    def set_razao_social(self, razao_social:str):
-        self.razao_social = razao_social
+    def set_saldo(self, saldo:float):
+        self.saldo = saldo        
 
-    def set_nome_fantasia(self, nome_fantasia:str):
-        self.nome_fantasia = nome_fantasia
+    def set_limite(self, limite:float):
+        self.limite = limite
 
-    def get_CNPJ(self) -> str:
-        return self.CNPJ
+    def set_cliente(self, cliente:Cliente):
+        self.cliente = cliente
 
-    def get_razao_social(self) -> str:
-        return self.razao_social
+    def get_numero(self) -> int:
+        return self.numero
 
-    def get_nome_fantasia(self) -> str:
-        return self.nome_fantasia
+    def get_tipo(self) -> str:
+        return self.tipo
 
+    def get_saldo(self) -> float:
+        return self.saldo
+    
+    def get_limite(self) -> float:
+        return self.limite
+    
+    def get_cliente(self) -> Cliente:
+        return self.cliente
+    
     def to_string(self) -> str:
-        return f"CNPJ: {self.get_CNPJ()} | Razão Social: {self.get_razao_social()} | Nome Fantasia: {self.get_nome_fantasia()}"
+        return f"Pedido n: {self.get_numero()} | Tipo Conta: {self.get_tipo()} | Saldo: {self.get_saldo()} | Limite Conta: {self.get_limite()} | Cliente: {self.get_cliente().get_nome()}"
